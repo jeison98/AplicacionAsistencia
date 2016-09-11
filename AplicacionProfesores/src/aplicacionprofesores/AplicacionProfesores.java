@@ -18,6 +18,7 @@ public class AplicacionProfesores {
      */
     public static void main(String[] args) {
        JOptionPane.showMessageDialog(null, "creo que ya!!");
+       System.out.println("hola que hace");
     }
     
 }
