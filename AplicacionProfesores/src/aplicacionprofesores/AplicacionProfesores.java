@@ -18,7 +18,8 @@ public class AplicacionProfesores {
      */
     public static void main(String[] args) {
        
-       ConexionSQL conec = new ConexionSQL ();
+      mainmenu v=new mainmenu();
+      v.setVisible(true);
        
     }
     

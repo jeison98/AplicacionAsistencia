@@ -5,6 +5,7 @@
  */
 package aplicacionprofesores;
 
+import java.sql.Connection;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,11 +16,15 @@ public class mainmenu extends javax.swing.JFrame {
 
     int contador=0;
     int contador1=0;
-    String[][]admin=new String[5][5];
+    String[][]admin=new String[5][2];
+    ConexionSQL x=new ConexionSQL();
+    Connection cn=x.ConexionSQL();
     
     public mainmenu() {
         initComponents();
-       // this.setExtendedState(MAXIMIZED_BOTH);
+        
+
+       
     }
 
     /**
@@ -38,7 +43,6 @@ public class mainmenu extends javax.swing.JFrame {
         cambiosbtn1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        newadminbtn = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,6 +55,11 @@ public class mainmenu extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
         jButton1.setText("Toma Asistencias");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
         jButton2.setText("Reportes");
@@ -69,15 +78,6 @@ public class mainmenu extends javax.swing.JFrame {
         });
 
         jMenu1.setText("Admin");
-
-        newadminbtn.setText("Nuevo Admin");
-        newadminbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newadminbtnActionPerformed(evt);
-            }
-        });
-        jMenu1.add(newadminbtn);
-
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
@@ -126,15 +126,6 @@ public class mainmenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cambiosbtn1ActionPerformed
 
-    private void newadminbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newadminbtnActionPerformed
-        
-       admin[contador][contador1]=JOptionPane.showInputDialog(null,"Nombre del Administrador");
-       admin[contador][contador1+1]=JOptionPane.showInputDialog(null,"Contraseña del Administrador");
-       contador+=1;
-        
-        
-    }//GEN-LAST:event_newadminbtnActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
         if(admin[0][0]!=null)
@@ -150,6 +141,12 @@ public class mainmenu extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        chek_in v=new chek_in();
+        v.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,6 +192,5 @@ public class mainmenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem newadminbtn;
     // End of variables declaration//GEN-END:variables
 }

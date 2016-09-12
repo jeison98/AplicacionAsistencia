@@ -8,16 +8,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Admin"/>
           </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="newadminbtn">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nuevo Admin"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newadminbtnActionPerformed"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
@@ -114,6 +104,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Toma Asistencias"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>

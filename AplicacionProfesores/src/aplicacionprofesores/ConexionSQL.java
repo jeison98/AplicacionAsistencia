@@ -5,12 +5,10 @@
  */
 package aplicacionprofesores;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,19 +18,23 @@ public class ConexionSQL {
     Connection co;
     Statement stm;
     
-    public ConexionSQL(){
-    try {
-    Class.forName("com.mysql.jdbc.Driver");
-    Connection co = DriverManager.getConnection("jdvc:mysql");
-    Statement stm = co.createStatement();
-    }
-    
-    catch (ClassNotFoundException exc) {
-    exc.printStackTrace();
-    }
-    catch (SQLException ex){
-    Logger.getLogger(ConexionSQL.class.getName()).log(Level.SEVERE,null,ex);
-    }
-    
+    public Connection ConexionSQL()
+    {
+        try 
+        {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection co = DriverManager.getConnection("jdbc:mysql://localHost/gestiondefallas?user=root&password=1234");
+            Statement stm = co.createStatement();
+          
+            
+
+        }
+
+        catch (Exception e)
+        {
+        System.out.println(e.getMessage());
+        JOptionPane.showMessageDialog(null,"no conectado");
+        }
+        return co;
     }
 }
