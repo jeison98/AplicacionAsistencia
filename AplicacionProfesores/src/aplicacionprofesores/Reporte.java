@@ -5,21 +5,10 @@
  */
 package aplicacionprofesores;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author familia velasco
  */
-public class AplicacionProfesores {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-       
-       ConexionSQL conec = new ConexionSQL ();
-       
-    }
+public class Reporte {
     
 }
