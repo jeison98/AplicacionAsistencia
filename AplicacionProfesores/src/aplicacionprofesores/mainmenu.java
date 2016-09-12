@@ -5,18 +5,21 @@
  */
 package aplicacionprofesores;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author usuario
  */
 public class mainmenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form mainmenu
-     */
+    int contador=0;
+    int contador1=0;
+    String[][]admin=new String[5][5];
+    
     public mainmenu() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
+       // this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -32,8 +35,10 @@ public class mainmenu extends javax.swing.JFrame {
         cambiosbtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        cambiosbtn1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        newadminbtn = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,15 +47,37 @@ public class mainmenu extends javax.swing.JFrame {
         jLabel1.setText("Gestor de Asistencias");
 
         cambiosbtn.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
-        cambiosbtn.setText("Actualización de Horarios");
+        cambiosbtn.setText("Actualización-Horarios");
 
         jButton1.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
         jButton1.setText("Toma Asistencias");
 
         jButton2.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
         jButton2.setText("Reportes");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jMenu1.setText("File");
+        cambiosbtn1.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
+        cambiosbtn1.setText("Actualización-Docentes");
+        cambiosbtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambiosbtn1ActionPerformed(evt);
+            }
+        });
+
+        jMenu1.setText("Admin");
+
+        newadminbtn.setText("Nuevo Admin");
+        newadminbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newadminbtnActionPerformed(evt);
+            }
+        });
+        jMenu1.add(newadminbtn);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
@@ -63,34 +90,66 @@ public class mainmenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cambiosbtn)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(190, 190, 190)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(244, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cambiosbtn1)
+                            .addComponent(cambiosbtn))))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cambiosbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cambiosbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cambiosbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cambiosbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiosbtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cambiosbtn1ActionPerformed
+
+    private void newadminbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newadminbtnActionPerformed
+        
+       admin[contador][contador1]=JOptionPane.showInputDialog(null,"Nombre del Administrador");
+       admin[contador][contador1+1]=JOptionPane.showInputDialog(null,"Contraseña del Administrador");
+       contador+=1;
+        
+        
+    }//GEN-LAST:event_newadminbtnActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        if(admin[0][0]!=null)
+        {
+            ReporteProfesores r=new ReporteProfesores();
+            r.setVisible(true);
+            dispose();
+        }
+        else
+        {
+          JOptionPane.showMessageDialog(null,"No se encuentra ningún administrador registrado","Acceso Negado",JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,11 +188,13 @@ public class mainmenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cambiosbtn;
+    private javax.swing.JButton cambiosbtn1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem newadminbtn;
     // End of variables declaration//GEN-END:variables
 }

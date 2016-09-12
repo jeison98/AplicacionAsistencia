@@ -20,6 +20,7 @@ public class Profesor {
     String programa;
     int fallas;
     int llegadastarde;
+    String observacion="ninguna";
     
     public Profesor(String name,String ident,int age,String mail,int cel,String Jornada,String Fac,String Programa)
     {
@@ -105,6 +106,31 @@ public class Profesor {
     public void setPrograma(String programa) {
         this.programa = programa;
     }
+
+    public int getFallas() {
+        return fallas;
+    }
+
+    public void setFallas(int fallas) {
+        this.fallas = fallas;
+    }
+
+    public int getLlegadastarde() {
+        return llegadastarde;
+    }
+
+    public void setLlegadastarde(int llegadastarde) {
+        this.llegadastarde = llegadastarde;
+    }
+
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+    
     
 
     
