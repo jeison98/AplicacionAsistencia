@@ -24,7 +24,7 @@ public class Profesor {
     String observacion="ninguna";
     
     public Profesor(String name,String Ape,String ident,int age,String mail,int cel,String Jornada,String Fac,String Programa)
-    {   
+    {
         this.nombre=name;
         this.apellido=Ape;
         this.id=ident;
@@ -131,14 +131,6 @@ public class Profesor {
 
     public void setObservacion(String observacion) {
         this.observacion = observacion;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
     }
     
     

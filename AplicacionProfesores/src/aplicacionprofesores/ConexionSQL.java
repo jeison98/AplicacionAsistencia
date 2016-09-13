@@ -25,8 +25,8 @@ public class ConexionSQL {
             Class.forName("com.mysql.jdbc.Driver");
             Connection co = DriverManager.getConnection("jdbc:mysql://localHost/gestiondefallas?user=root&password=1234");
             Statement stm = co.createStatement();
-            
-          
+            System.out.println("conectado");
+
             
 
         }
