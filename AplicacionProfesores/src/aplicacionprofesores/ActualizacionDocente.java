@@ -216,7 +216,7 @@ public class ActualizacionDocente extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        Profesor x = new Profesor(n2.getText(),n3.getText(),id1.getText(),year.getText(),mail.getText(),tel.getText(),jorna.getText(),facul.getText(),program.getText());
+        Profesor x = new Profesor(n2.getText(),n3.getText(),id1.getText(),Integer.parseInt(year.getText()),mail.getText(),Integer.parseInt(tel.getText()),jorna.getText(),facul.getText(),program.getText());
         v.add(x);
     }//GEN-LAST:event_jButton2ActionPerformed
 

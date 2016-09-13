@@ -11,6 +11,7 @@ package aplicacionprofesores;
  */
 public class Profesor {
     String nombre;
+    String apellido;
     String id;
     String correo;
     int tel;
@@ -22,9 +23,10 @@ public class Profesor {
     int llegadastarde;
     String observacion="ninguna";
     
-    public Profesor(String name,String ident,int age,String mail,int cel,String Jornada,String Fac,String Programa)
-    {
+    public Profesor(String name,String Ape,String ident,int age,String mail,int cel,String Jornada,String Fac,String Programa)
+    {   
         this.nombre=name;
+        this.apellido=Ape;
         this.id=ident;
         this.edad=age;
         this.correo=mail;
@@ -129,6 +131,14 @@ public class Profesor {
 
     public void setObservacion(String observacion) {
         this.observacion = observacion;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
     
     
