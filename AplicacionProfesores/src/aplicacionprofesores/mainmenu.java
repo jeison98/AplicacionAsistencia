@@ -19,7 +19,6 @@ public class mainmenu extends javax.swing.JFrame {
     String[][]admin=new String[5][2];
     ConexionSQL x=new ConexionSQL();
     Connection cn=x.ConexionSQL();
-    ActualizacionDocente ActDocente = new ActualizacionDocente ();
     
     public mainmenu() {
         initComponents();
@@ -132,6 +131,7 @@ public class mainmenu extends javax.swing.JFrame {
 
     private void cambiosbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiosbtn1ActionPerformed
         // TODO add your handling code here:
+        ActualizacionDocente ActDocente = new ActualizacionDocente ();
         ActDocente.setVisible(true);
         dispose();
         
@@ -141,16 +141,11 @@ public class mainmenu extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        if(admin[0][0]!=null)
-        {
+      
             ReporteProfesores r=new ReporteProfesores();
             r.setVisible(true);
             dispose();
-        }
-        else
-        {
-          JOptionPane.showMessageDialog(null,"No se encuentra ningún administrador registrado","Acceso Negado",JOptionPane.INFORMATION_MESSAGE);
-        }
+       
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
