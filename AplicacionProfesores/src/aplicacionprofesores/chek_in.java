@@ -9,6 +9,7 @@ import java.awt.GridBagLayout;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -18,9 +19,11 @@ import javax.swing.table.DefaultTableModel;
  * @author Software
  */
 public class chek_in extends javax.swing.JFrame {
+    
     ConexionSQL ci=new ConexionSQL();
-    Connection cn=ci.ConexionSQL();
+    Connection conexion=ci.ConexionSQL();
     DefaultTableModel tabla;
+    ArrayList<Profesor> profe2= new ArrayList ();
     mainmenu hola=new mainmenu();
     
     public chek_in() {
@@ -38,9 +41,12 @@ public class chek_in extends javax.swing.JFrame {
     private void initComponents() {
 
         btnactualizar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbl = new javax.swing.JTable();
         btnvolver = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbl = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
@@ -49,22 +55,12 @@ public class chek_in extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnactualizar.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 14)); // NOI18N
-        btnactualizar.setText("Actualizar");
+        btnactualizar.setText("Guardar");
         btnactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnactualizarActionPerformed(evt);
             }
         });
-
-        tbl.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Facultad-Área","Apellidos", "Nombre"
-            }
-        ));
-        jScrollPane1.setViewportView(tbl);
 
         btnvolver.setFont(new java.awt.Font("Perpetua Titling MT", 1, 14)); // NOI18N
         btnvolver.setText("Volver");
@@ -73,6 +69,26 @@ public class chek_in extends javax.swing.JFrame {
                 btnvolverActionPerformed(evt);
             }
         });
+
+        tbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Emprendimineto","Rodriguez García","Nestor Adres"},
+                {"Electiva", "Hernández Ramos", "Cesar Augusto"},
+                {"Emprendimiento", "Rojas Rodriguez","Fiorella Constanza"},
+                {"Salud","Bejarano Castillo", "Mónica Paola"}
+
+            },
+            new String [] {
+                "Facultad", "Apellidos", "Nombres","Informe"
+            }
+        ));
+        jScrollPane2.setViewportView(tbl);
+
+        jLabel1.setText("Informe: -Llegada tarde.");
+
+        jLabel2.setText("-Falla");
+
+        jLabel3.setText("-Incapacidad");
 
         jMenu1.setText("File");
 
@@ -92,33 +108,56 @@ public class chek_in extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addComponent(btnvolver)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(29, 29, 29))
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnvolver)
-                    .addComponent(btnactualizar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnactualizar)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnvolver)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
+                        .addGap(20, 20, 20)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
+         
+       // selectprofes("SELECT * FROM Profesores");
        
-        selectprofes("SELECT * FROM Profesores");
+       JOptionPane.showMessageDialog(null,"Lista Guardada");
+        
+        
+        
+        
         
     }//GEN-LAST:event_btnactualizarActionPerformed
 
@@ -170,41 +209,42 @@ public class chek_in extends javax.swing.JFrame {
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btnvolver;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tbl;
     // End of variables declaration//GEN-END:variables
 
 public void selectprofes(String sql)
 {
 
-    
-    
-    
+ 
     
 try
         {   
             
-            tabla.addColumn("Facultad-Área");
+           /* tabla.addColumn("Facultad-Área");
             tabla.addColumn("Apellidos");
             tabla.addColumn("Nombres");
             tbl.setModel(tabla);
-
-            
-            
-            
-            String[] datos=new String[60];
-            Statement st=cn.createStatement();
+*/
+            String[] datos=new String[70];
+            Statement st=conexion.createStatement();
+            System.out.println("___________");
             ResultSet rs=st.executeQuery(sql);
+            System.out.println(rs.next());
             int contador=0;
-            while(rs.next())
-            {
+          /*  while(rs.next())
+            {   
                 datos[contador]=rs.getString(contador+1);
+                System.out.println(datos[contador]);
                 contador+=1;
                 tabla.addRow(datos);
-            }
+            }*/
             
             
             

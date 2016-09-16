@@ -5,6 +5,7 @@
  */
 package aplicacionprofesores;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class AplicacionProfesores {
 
+    ArrayList<Profesor> mainlist= new ArrayList ();
+    
     /**
      * @param args the command line arguments
      */

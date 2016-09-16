@@ -6,14 +6,14 @@
 package aplicacionprofesores;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Usuario
  */
 public class ActualizacionDocente extends javax.swing.JFrame {
-    mainmenu menu = new  mainmenu();
-    ArrayList<Profesor> v= new ArrayList ();
+    ArrayList<Profesor> profe= new ArrayList ();
     public ActualizacionDocente() {
         initComponents();
     }
@@ -41,7 +41,7 @@ public class ActualizacionDocente extends javax.swing.JFrame {
         mail = new javax.swing.JTextField();
         tel = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonguardar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         facul = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -87,10 +87,10 @@ public class ActualizacionDocente extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Guardar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonguardar.setText("Guardar");
+        botonguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonguardarActionPerformed(evt);
             }
         });
 
@@ -148,7 +148,7 @@ public class ActualizacionDocente extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(393, 393, 393)
-                        .addComponent(jButton2)))
+                        .addComponent(botonguardar)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -196,7 +196,7 @@ public class ActualizacionDocente extends javax.swing.JFrame {
                     .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jorna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(70, 70, 70)
-                .addComponent(jButton2)
+                .addComponent(botonguardar)
                 .addContainerGap())
         );
 
@@ -209,17 +209,29 @@ public class ActualizacionDocente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        mainmenu menu = new  mainmenu();
         menu.setVisible(true);
+        menu.profe1=profe;
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonguardarActionPerformed
         // TODO add your handling code here:
         
         Profesor x = new Profesor(n2.getText(),n3.getText(),id1.getText(),Integer.parseInt(year.getText()),mail.getText(),Integer.parseInt(tel.getText()),jorna.getText(),facul.getText(),program.getText());
-        v.add(x);
-        System.out.println(x);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        profe.add(x);
+        JOptionPane.showMessageDialog(null,"Ha ingresado al docente: \n - "+x.nombre+" "+x.apellido);
+        n2.setText("");
+        n3.setText("");
+        id1.setText("");
+        year.setText("");
+        mail.setText("");
+        tel.setText("");
+        jorna.setText("");
+        facul.setText("");
+        program.setText("");
+        
+    }//GEN-LAST:event_botonguardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,10 +269,10 @@ public class ActualizacionDocente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonguardar;
     private javax.swing.JTextField facul;
     private javax.swing.JTextField id1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
