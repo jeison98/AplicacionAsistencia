@@ -6,10 +6,28 @@
 package aplicacionprofesores;
 
 import java.awt.GridBagLayout;
+import java.sql.Array;
+import java.sql.Blob;
+import java.sql.CallableStatement;
+import java.sql.Clob;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.NClob;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLClientInfoException;
+import java.sql.SQLException;
+import java.sql.SQLWarning;
+import java.sql.SQLXML;
+import java.sql.Savepoint;
 import java.sql.Statement;
+import java.sql.Struct;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Properties;
+import java.util.concurrent.Executor;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -21,10 +39,14 @@ import javax.swing.table.DefaultTableModel;
 public class chek_in extends javax.swing.JFrame {
     
     ConexionSQL ci=new ConexionSQL();
-    Connection conexion=ci.ConexionSQL();
+   
+    
+
+
     DefaultTableModel tabla;
     ArrayList<Profesor> profe2= new ArrayList ();
     mainmenu hola=new mainmenu();
+  
     
     public chek_in() {
         
@@ -55,7 +77,7 @@ public class chek_in extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnactualizar.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 14)); // NOI18N
-        btnactualizar.setText("Guardar");
+        btnactualizar.setText("Actualizar");
         btnactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnactualizarActionPerformed(evt);
@@ -151,9 +173,15 @@ public class chek_in extends javax.swing.JFrame {
 
     private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
          
-       // selectprofes("SELECT * FROM Profesores");
        
-       JOptionPane.showMessageDialog(null,"Lista Guardada");
+        try {
+            ci.getCo();
+            ci.goku("select * from Profesores;");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(chek_in.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
         
         
         
@@ -221,30 +249,29 @@ public class chek_in extends javax.swing.JFrame {
 
 public void selectprofes(String sql)
 {
+   /*
+    Statement st =null;
 
  
     
-try
+    try
         {   
+      
+            String[] datos=new String[70];            
             
-           /* tabla.addColumn("Facultad-Área");
-            tabla.addColumn("Apellidos");
-            tabla.addColumn("Nombres");
-            tbl.setModel(tabla);
-*/
-            String[] datos=new String[70];
-            Statement st=conexion.createStatement();
-            System.out.println("___________");
-            ResultSet rs=st.executeQuery(sql);
+            st=conexion.createStatement();
+             System.out.println("weee");
+             ResultSet rs=st.executeQuery(sql);
+           
             System.out.println(rs.next());
             int contador=0;
-          /*  while(rs.next())
+           while(rs.next())
             {   
                 datos[contador]=rs.getString(contador+1);
                 System.out.println(datos[contador]);
                 contador+=1;
                 tabla.addRow(datos);
-            }*/
+            }
             
             
             
@@ -253,11 +280,14 @@ try
         catch(Exception ex)
         {
             JOptionPane.showMessageDialog(null,"No se puede Actualizar");
+             JOptionPane.showMessageDialog(null, (ex));
         }
         
-
+*/
 
 }
+}
+
+
 
     
-}
